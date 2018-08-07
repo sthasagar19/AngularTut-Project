@@ -19,7 +19,6 @@ export class ProductListComponet implements OnInit{
     set listFilter(value:string){
         this._listFilter=value;
         this.filteredProducts=this.listFilter ? this.performFilter(this.listFilter):this.products;
-console.log(this.filteredProducts);
         
     }
     filteredProducts: IProduct[];
@@ -69,5 +68,9 @@ console.log(this.filteredProducts);
           filterBy =filterBy.toLocaleLowerCase();
           return this.products.filter((product:IProduct) => 
           product.productName.toLocaleLowerCase().indexOf(filterBy)!==-1);
+      }
+
+      onRatingClicked(message:string):void{
+          this.pageTitle='Product List: '+message;
       }
 }
